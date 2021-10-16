@@ -1,0 +1,17 @@
+<p><span style="font-size: 20px;">如下是英姿代码：</span></p><pre class="ql-syntax" spellcheck="false"><span class="hljs-attr">code</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">&nbsp; &nbsp; audio:</span><span class="hljs-number">2</span>,
+<span class="hljs-symbol">&nbsp; &nbsp; trigger:</span><span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">&nbsp; &nbsp; &nbsp; &nbsp; player:</span><span class="hljs-string">"phaseDrawBegin2"</span>,
+&nbsp; &nbsp; <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">&nbsp; &nbsp; frequent:</span>true,
+<span class="hljs-symbol">&nbsp; &nbsp; filter:</span>function(event,player)<span class="hljs-punctuation">{</span>
+&nbsp; &nbsp; &nbsp; &nbsp; return !event.numF<span class="hljs-attr">ixed</span><span class="hljs-punctuation">;</span>
+&nbsp; &nbsp; <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">&nbsp; &nbsp; content:</span>function()<span class="hljs-punctuation">{</span>
+&nbsp; &nbsp; &nbsp; &nbsp; trigger.num++<span class="hljs-punctuation">;</span>
+&nbsp; &nbsp; <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">&nbsp; &nbsp; ai:</span><span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">&nbsp; &nbsp; &nbsp; &nbsp; threaten:</span><span class="hljs-number">1.3</span>,
+&nbsp; &nbsp; <span class="hljs-punctuation">}</span>,
+<span class="hljs-punctuation">}</span>
+</pre>
