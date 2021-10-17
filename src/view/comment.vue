@@ -5,7 +5,7 @@
 				<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
 				<el-breadcrumb-item>论坛</el-breadcrumb-item>
 			</el-breadcrumb>
-			<div style="display: inline-block; position: fixed; top: 15px; right: 10%;">
+			<div v-if="!routeQquery.ownerId" style="display: inline-block; position: fixed; top: 15px; right: 10%;">
 				<el-input
 					style="width: 170px;"
 					v-model="searchInput"
@@ -29,7 +29,7 @@
 				:comments="showCommentData"
 				:checkLogined="checkLogined"
 				:userId="userId"
-				:update="getComment">
+				:update="update">
 			</comment>
 			<!-- 登录组件 -->
 			<login
@@ -63,12 +63,13 @@
 				@current-change="currentChange"
 				:total="paginationTotal">
 			</el-pagination>
-			<div v-if="userId">
+			<!-- 帖子倒序显示按钮 -->
+			<el-button v-if="userId && !routeQquery.ownerId" style="position: absolute; right: 300px; bottom: 5px;" type="primary" icon="el-icon-sort-up" @click="reverse">倒序</el-button>
+			<div v-if="userId && !routeQquery.ownerId">
 				<!-- 查看回复 -->
-				<el-badge v-if="badgeValue > 0" :value="badgeValue" class="item" style="position: absolute; right: 115px; bottom: 5px;">
+				<el-badge :hidden="badgeValue == 0" :value="badgeValue" class="item" style="position: absolute; right: 115px; bottom: 5px;">
 				  <el-button type="primary" icon="el-icon-chat-dot-round" @click="drawerVisible = true">回复</el-button>
 				</el-badge>
-				<el-button v-else type="primary" style="position: absolute; right: 115px; bottom: 5px;" icon="el-icon-chat-dot-round" @click="drawerVisible = true">回复</el-button>
 				<!-- 查看回复的抽屉 -->
 				<el-drawer
 					title="回复"
@@ -78,9 +79,10 @@
 					<div slot="title" class="header-title" style="text-align: center;">
 						<span>回复</span>
 					</div>
-					<commentReply :comments="commentReply"></commentReply>
+					<commentReply :comments="commentReplyData" :badgeValue="badgeValue" :userId="userId"></commentReply>
 				</el-drawer>
 			</div>
+			<el-button v-if="routeQquery.ownerId" type="primary" icon="el-icon-back" style="position: absolute; right: 115px; bottom: 5px;" @click="update">返回</el-button>
 			<!-- 发帖按钮 -->
 			<el-button style="position: absolute; right: 15px; bottom: 5px;" type="primary" icon="el-icon-edit" @click="showPostDialog">发帖</el-button>
 		</el-footer>
@@ -119,27 +121,8 @@
 				paginationTotal: 0, //显示的帖子数量
 				badgeValue: 2, //被回复的评论数
 				drawerVisible: false, //显示抽屉
-				commentReply: [{
-					//还要有id和文章id
-					//打开后，badgeValue归零
-					fromId: '寰宇星城',
-					date: '2021-10-12 16:45:00',
-					content: '<p>回复第一份公告</p>',
-					replyTo: {
-						fromId: '诗笺',
-						date: '2021-10-12 16:45:00',
-						content: '<p>第一份公告</p>',
-					},
-				}, {
-					fromId: '寰宇星城',
-					date: '2021-10-12 16:45:00',
-					content: '<p>回复第一份公告</p>',
-					replyTo: {
-						fromId: '诗笺',
-						date: '2021-10-12 16:45:00',
-						content: '<p>第一份公告</p>',
-					},
-				}], //被回复的内容
+				commentReplyData: [], //被回复的内容
+				routeQquery: this.$route.query,
 			};
 		},
 		methods: {
@@ -157,6 +140,7 @@
 					this.userThumbsUpData = userThumbsUpData;
 					this.$refs['comment'].setThumbsUpData(userThumbsUpData);
 				}
+				this.getCommentReply(userId);
 			},
 			loginOut() {
 				this.avatarUrl = '';
@@ -167,12 +151,12 @@
 				this.postDialogVisible = false;
 				this.postEditorValue = '';
 			},
-			getComment() {
+			getComment({ownerId}) {
 				this.searchInput = '';
 				this.commentData = [];
 				this.showCommentData = [];
 				this.searchCommentData = [];
-				fetch(getServer + '/getComment')
+				fetch(getServer + '/getComment' + (ownerId ? `?ownerId=${ownerId}` : ''))
 					.then(response => response.json())
 					.then(result => {
 						if (result.code == 200) {
@@ -189,6 +173,27 @@
 					.catch(e => {
 						this.$notify({
 							title: `评论数据加载失败：${e}`,
+							type: 'error'
+						});
+					});
+			},
+			getCommentReply(userId) {
+				fetch(getServer + `/getCommentReply?userId=${userId}`)
+					.then(response => response.json())
+					.then(result => {
+						if (result.code == 200) {
+							this.commentReplyData = result.data;
+							this.badgeValue = result.data.filter(i => !i.isReviewedReply).length;
+						} else {
+							this.$notify({
+								title: `回复数据加载失败：${result.message}`,
+								type: 'error'
+							});
+						}
+					})
+					.catch(e => {
+						this.$notify({
+							title: `回复数据加载失败：${e}`,
 							type: 'error'
 						});
 					});
@@ -268,10 +273,17 @@
 					this.searchCommentData = [];
 					this.currentChange(1);
 				}
-			}
+			},
+			update() {
+				location.href = '/comment';
+			},
+			reverse() {
+				this.commentData.reverse();
+				this.currentChange(this.currentPage);
+			},
 		},
 		created() {
-			this.getComment();
+			this.getComment(this.routeQquery);
 		},
 	};
 </script>
@@ -300,5 +312,10 @@
 	.item {
 	  margin-top: 10px;
 	  margin-right: 40px;
+	}
+
+	.el-badge__content.is-fixed.is-dot {
+		right: 30px !important;
+		top: 25px !important;
 	}
 </style>

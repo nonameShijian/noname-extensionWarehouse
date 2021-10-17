@@ -333,7 +333,7 @@
 		user-select: none;
 	}
 
-	.container .comment {
+	.comment {
 		display: flex;
 		flex-direction: column;
 		padding: 10px;
@@ -343,7 +343,7 @@
 		border-radius: 15px;
 	}
 
-	.container .comment .info {
+	.comment .info {
 		display: flex;
 		align-items: center;
 	}
@@ -352,13 +352,13 @@
 		border-radius: 50%;
 	}
 
-	.container .comment .info .right {
+	.comment .info .right {
 		display: flex;
 		flex-direction: column;
 		margin-left: 10px;
 	}
 
-	.container .comment .info .right .name {
+	.comment .info .right .name {
 		font-size: 16px;
 		color: #303133;
 		margin-bottom: 5px;
@@ -400,70 +400,70 @@
 		display:block;
 	}
 
-	.container .comment .info .right .date {
+	.comment .info .right .date {
 		font-size: 12px;
 		color: #909399;
 	}
 
-	.container .comment .content {
+	.comment .content {
 		font-size: 16px;
 		color: #303133;
 		line-height: 20px;
 		padding: 10px 0;
 	}
 
-	.container .comment .control {
+	.comment .control {
 		display: flex;
 		align-items: center;
 		font-size: 14px;
 		color: #909399;
 	}
 
-	.container .comment .control .like {
+	.comment .control .like {
 		display: flex;
 		align-items: center;
 		margin-right: 10px;
 		cursor: pointer;
 	}
 
-	.container .comment .control .like.active,
-	.container .comment .control .like:hover {
+	.comment .control .like.active,
+	.comment .control .like:hover {
 		color: #409EFF;
 	}
 
-	.container .comment .control .like .iconfont {
+	.comment .control .like .iconfont {
 		font-size: 14px;
 		margin-right: 5px;
 	}
 
-	.container .comment .control .comment-reply {
+	.comment .control .comment-reply {
 		display: flex;
 		align-items: center;
 		cursor: pointer;
 		margin-right: 5px;
 	}
 
-	.container .comment .control .comment-reply:hover {
+	.comment .control .comment-reply:hover {
 		color: #333;
 	}
 
-	.container .comment .control .comment-reply .iconfont {
+	.comment .control .comment-reply .iconfont {
 		font-size: 16px;
 		margin-right: 5px;
 	}
 
-	.container .comment .reply {
+	.comment .reply {
 		margin: 10px 0;
 		border-left: 2px solid #DCDFE6;
 	}
 
-	.container .comment .reply .item {
+	.comment .reply .item {
 		margin: 0 10px;
 		padding: 10px 0;
 		border-bottom: 2px dashed #00000021;
 	}
 
-	.container .comment .reply .item .reply-content {
+	.comment .reply .item .reply-content {
 		/* display: flex; */
 		align-items: center;
 		font-size: 14px;
@@ -486,7 +486,7 @@
 		margin-right: 5px;
 	}
 
-	.container .comment .reply .item .reply-bottom {
+	.comment .reply .item .reply-bottom {
 		display: flex;
 		align-items: center;
 		margin-top: 6px;
@@ -494,22 +494,22 @@
 		color: #909399;
 	}
 
-	.container .comment .reply .item .reply-bottom .reply-text {
+	.comment .reply .item .reply-bottom .reply-text {
 		display: flex;
 		align-items: center;
 		margin-left: 10px;
 		cursor: pointer;
 	}
 
-	.container .comment .reply .item .reply-bottom .reply-text:hover {
+	.comment .reply .item .reply-bottom .reply-text:hover {
 		color: #333;
 	}
 
-	.container .comment .reply .item .reply-bottom .reply-text .icon-comment {
+	.comment .reply .item .reply-bottom .reply-text .icon-comment {
 		margin-right: 5px;
 	}
 
-	.container .comment .reply .write-reply {
+	.comment .reply .write-reply {
 		display: flex;
 		align-items: center;
 		font-size: 14px;
@@ -518,23 +518,13 @@
 		cursor: pointer;
 	}
 
-	.container .comment .reply .write-reply:hover {
+	.comment .reply .write-reply:hover {
 		color: #303133;
 	}
 
-	.container .comment .reply .write-reply .el-icon-edit {
+	.comment .reply .write-reply .el-icon-edit {
 		margin-right: 5px;
 	}
-
-	/*.container .comment .reply .fade-enter-active,
-	.container .comment .reply fade-leave-active {
-		transition: opacity 0.5s;
-	}
-
-	.container .comment .reply .fade-enter,
-	.container .comment .reply .fade-leave-to {
-		opacity: 0;
-	}*/
 
 	.input-wrapper {
 		padding: 10px;
