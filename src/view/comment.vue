@@ -318,4 +318,8 @@
 		right: 30px !important;
 		top: 25px !important;
 	}
+
+	.el-button {
+		font-size: 14px;
+	}
 </style>

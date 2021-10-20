@@ -244,7 +244,6 @@
 	}
 
 	.el-tabs__item,
-	.el-button,
 	.el-table {
 		font-size: 20px;
 	}
