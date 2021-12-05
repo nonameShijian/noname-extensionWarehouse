@@ -1,7 +1,7 @@
 <!--评论模块-->
 <template>
 	<div class="container">
-		<div class="comment" v-if="comments.length > 0" v-for="item in comments" :key="item.id">
+		<div class="comment" v-for="item in comments" :key="item.id">
 			<div class="info">
 				<img class="avatar" :src="showAvatar(item)" width="36" height="36" />
 				<div class="right">
@@ -465,6 +465,7 @@
 
 	.comment .reply .item .reply-content {
 		/* display: flex; */
+        padding: 5px;
 		align-items: center;
 		font-size: 14px;
 		color: #303133;
@@ -553,6 +554,7 @@
 	}
 
 	.reply-content-view {
+        padding: 5px;
 		background-color: rgba(220, 220, 220, 0.5);
 		border-radius: 10px;
 		/* display: flex; */

@@ -5,7 +5,7 @@
 			<el-header>
 				<el-breadcrumb separator-class="el-icon-arrow-right" style="cursor: pointer; font-size: 20px; line-height: 4; width: 70%;">
 					<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-					<el-breadcrumb-item>扩展仓库</el-breadcrumb-item>
+					<el-breadcrumb-item>扩展下载</el-breadcrumb-item>
 				</el-breadcrumb>
 				<avatar
 					:userId="userId"
@@ -90,7 +90,7 @@
 						</template>
 					</el-table-column>
 					<el-table-column align="center">
-						<template slot="header" slot-scope="scope">
+						<template slot="header">
 							<el-input v-model="search" size="mini" placeholder="搜索扩展" clearable prefix-icon="el-icon-search"></el-input>
 						</template>
 						<template slot-scope="scope">
@@ -98,8 +98,12 @@
 						</template>
 					</el-table-column>
 				</el-table>
-				<el-dialog :title="scoreTitle" :visible.sync="scoreVisible" width="40%" :before-close="handleScoreClose"
-				 :show-close="false">
+				<el-dialog
+                    :title="scoreTitle"
+                    :visible.sync="scoreVisible"
+                    width="40%"
+                    :before-close="handleScoreClose"
+				    :show-close="false">
 					<el-rate style="zoom: 1.5;" v-model="scoreValue" show-text>
 					</el-rate>
 					<span slot="footer" class="dialog-footer">
@@ -153,7 +157,7 @@
 			handleScore(index, row) {
 				//先判断是否登录
 				if (!this.$refs['login'].isLogined) {
-					this.loginVisible = true;
+					this.showLogin();
 				} else {
 					this.scoreTitle = `给【${row.name}】扩展评分`;
 					this.scoreVisible = true;
@@ -275,6 +279,7 @@
 			},
 		},
 		mounted() {
+			//setInterval(() => console.log(this.search), 1000);
 			this.extensions = [];
 			window.extension = {};
 			fetch(getServer + '/catalog')
@@ -324,6 +329,10 @@
 	}
 
 	.el-table {
-		font-size: 20px;
+		font-size: 20px !important;
 	}
+
+    .el-form.demo-table-expand.el-form--label-left {
+        margin: 20px;
+    }
 </style>

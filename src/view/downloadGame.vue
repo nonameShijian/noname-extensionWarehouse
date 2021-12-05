@@ -27,12 +27,12 @@
 								<p>无名杀应用用于游玩无名杀，而完整包是包含游戏所有武将，皮肤，音频，技能代码的游戏数据包，二者缺一不可，应用就好比一个容器来装入数据。</p>
 							</div>
 							<h4>Android平台</h4>
-							<el-table :data="AndroidData" border style="width: 100%">
+							<el-table :data="AndroidData" border style="width: 100%; font-size:20px;">
 								<el-table-column align="center" prop="name" label="文件名称"></el-table-column>
 								<el-table-column align="center" prop="size" label="文件大小"></el-table-column>
 								<el-table-column align="center" prop="info" label="文件说明"></el-table-column>
 								<el-table-column align="center" fixed="right">
-									<template slot="header" slot-scope="scope">
+									<template slot="header">
 										<i class="el-icon-download">下载</i>
 									</template>
 									<template slot-scope="scope">
@@ -43,12 +43,12 @@
 								</el-table-column>
 							</el-table>
 							<h4>IOS平台</h4>
-							<el-table :data="IOSData" border style="width: 100%">
+							<el-table :data="IOSData" border style="width: 100%; font-size:20px;">
 								<el-table-column align="center" prop="name" label="文件名称"></el-table-column>
 								<el-table-column align="center" prop="size" label="文件大小"></el-table-column>
 								<el-table-column align="center" prop="info" label="文件说明"></el-table-column>
 								<el-table-column align="center" fixed="right">
-									<template slot="header" slot-scope="scope">
+									<template slot="header">
 										<i class="el-icon-download">下载</i>
 									</template>
 									<template slot-scope="scope">
@@ -59,12 +59,12 @@
 								</el-table-column>
 							</el-table>
 							<h4>Windows平台</h4>
-							<el-table :data="WindowsData" border style="width: 100%">
+							<el-table :data="WindowsData" border style="width: 100%; font-size:20px;">
 								<el-table-column align="center" prop="name" label="文件名称"></el-table-column>
 								<el-table-column align="center" prop="size" label="文件大小"></el-table-column>
 								<el-table-column align="center" prop="info" label="文件说明"></el-table-column>
 								<el-table-column align="center" fixed="right">
-									<template slot="header" slot-scope="scope">
+									<template slot="header">
 										<i class="el-icon-download">下载</i>
 									</template>
 									<template slot-scope="scope">
@@ -75,12 +75,12 @@
 								</el-table-column>
 							</el-table>
 							<h4>Linux平台</h4>
-							<el-table :data="LinuxData" border style="width: 100%">
+							<el-table :data="LinuxData" border style="width: 100%; font-size:20px;">
 								<el-table-column align="center" prop="name" label="文件名称"></el-table-column>
 								<el-table-column align="center" prop="size" label="文件大小"></el-table-column>
 								<el-table-column align="center" prop="info" label="文件说明"></el-table-column>
 								<el-table-column align="center" fixed="right">
-									<template slot="header" slot-scope="scope">
+									<template slot="header">
 										<i class="el-icon-download">下载</i>
 									</template>
 									<template slot-scope="scope">
@@ -91,12 +91,12 @@
 								</el-table-column>
 							</el-table>
 							<h4>Mac平台</h4>
-							<el-table :data="MacData" border style="width: 100%">
+							<el-table :data="MacData" border style="width: 100%; font-size:20px;">
 								<el-table-column align="center" prop="name" label="文件名称"></el-table-column>
 								<el-table-column align="center" prop="size" label="文件大小"></el-table-column>
 								<el-table-column align="center" prop="info" label="文件说明"></el-table-column>
 								<el-table-column align="center" fixed="right">
-									<template slot="header" slot-scope="scope">
+									<template slot="header">
 										<i class="el-icon-download">下载</i>
 									</template>
 									<template slot-scope="scope">
@@ -208,57 +208,12 @@
 	};
 </script>
 
-<style>
+<style scoped>
 	#downloadGame {
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		top: 0;
 		left: 0;
-	}
-
-	.text {
-		font-size: 14px;
-	}
-
-	.item {
-		margin-bottom: 18px;
-	}
-
-	.clearfix:before,
-	.clearfix:after {
-		display: table;
-		content: "";
-	}
-
-	.clearfix:after {
-		clear: both
-	}
-
-	.box-card {
-		width: 480px;
-	}
-
-	label {
-		color: red;
-	}
-
-	.el-tabs__item,
-	.el-table {
-		font-size: 20px;
-	}
-
-	.tip {
-		padding: 8px 16px;
-		background-color: #ecf8ff;
-		border-radius: 4px;
-		border-left: 5px solid #50bfff;
-		margin: 20px 0;
-	}
-
-	.tip p {
-		font-size: 18px;
-		color: #5e6d82;
-		line-height: 1.5em;
 	}
 </style>

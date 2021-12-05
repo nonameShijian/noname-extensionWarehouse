@@ -67,7 +67,7 @@
 			<el-button v-if="userId && !routeQquery.ownerId" style="position: absolute; right: 300px; bottom: 5px;" type="primary" icon="el-icon-sort-up" @click="reverse">倒序</el-button>
 			<div v-if="userId && !routeQquery.ownerId">
 				<!-- 查看回复 -->
-				<el-badge :hidden="badgeValue == 0" :value="badgeValue" class="item" style="position: absolute; right: 115px; bottom: 5px;">
+				<el-badge :hidden="badgeValue == 0" :value="badgeValue" class="badge" style="position: absolute; right: 115px; bottom: 5px;">
 				  <el-button type="primary" icon="el-icon-chat-dot-round" @click="drawerVisible = true">回复</el-button>
 				</el-badge>
 				<!-- 查看回复的抽屉 -->
@@ -152,6 +152,13 @@
 				this.postEditorValue = '';
 			},
 			getComment({ownerId}) {
+				const loading = this.$loading({
+					lock: true,
+					text: 'Loading',
+					spinner: 'el-icon-loading',
+					background: 'rgba(0, 0, 0, 0.7)',
+					target: document.body
+				});
 				this.searchInput = '';
 				this.commentData = [];
 				this.showCommentData = [];
@@ -159,6 +166,7 @@
 				fetch(getServer + '/getComment' + (ownerId ? `?ownerId=${ownerId}` : ''))
 					.then(response => response.json())
 					.then(result => {
+						loading.close();
 						if (result.code == 200) {
 							this.commentData = result.data;
 							this.currentChange(1);
@@ -171,6 +179,7 @@
 						}
 					})
 					.catch(e => {
+						loading.close();
 						this.$notify({
 							title: `评论数据加载失败：${e}`,
 							type: 'error'
@@ -275,7 +284,8 @@
 				}
 			},
 			update() {
-				location.href = '/comment';
+				//location.href = '/comment';
+				this.getComment(this.routeQquery);
 			},
 			reverse() {
 				this.commentData.reverse();
@@ -288,14 +298,6 @@
 	};
 </script>
 <style>
-	pre.ql-syntax {
-	    background-color: #23241f;
-	    color: #f8f8f2;
-	    overflow: visible;
-		font-size: 20px;
-		font-family: '宋体';
-	}
-
 	.ql-emoji {
 		font-size: 18px;
 		padding: 0 !important;
@@ -309,7 +311,7 @@
 		width: 100% !important;
 	}
 
-	.item {
+	.badge {
 	  margin-top: 10px;
 	  margin-right: 40px;
 	}

@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<el-badge :hidden="item.isReviewedReply" is-dot v-if="comments.length > 0" v-for="(item) in comments" :key="item.id">
+		<el-badge :hidden="item.isReviewedReply" is-dot v-for="(item) in comments" :key="item.id">
 			<div class="comment">
 			<!-- <div class="comment" v-if="comments.length > 0" v-for="(item) in comments" :key="item.id"> -->
 				<!-- 评论的头像，日期，内容 -->

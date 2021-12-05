@@ -194,39 +194,7 @@
 	};
 </script>
 
-<style>
-	.warning {
-		padding: 8px 16px;
-		background-color: #fff6f7;
-		border-radius: 4px;
-		border-left: 5px solid #fe6c6f;
-		margin: 10px 0;
-	}
-
-	.warning p {
-		font-size: 20px;
-		color: #5e6d82;
-		line-height: 1.5em;
-	}
-
-	.text {
-		font-size: 14px;
-	}
-
-	.item {
-		margin-bottom: 18px;
-	}
-
-	.clearfix:before,
-	.clearfix:after {
-		display: table;
-		content: "";
-	}
-
-	.clearfix:after {
-		clear: both
-	}
-
+<style scoped>
 	.box-card {
 		width: 480px;
 		margin: auto;

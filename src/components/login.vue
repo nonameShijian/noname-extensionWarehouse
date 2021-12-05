@@ -15,7 +15,9 @@
 			</el-form-item>
 		</el-form>
 		<div slot="footer" class="dialog-footer">
-			<el-button type="primary" @click="toRegister">注 册</el-button>
+			<el-button type="primary">
+				<router-link to="/register" style="text-decoration: none; color: white;">注 册</router-link>
+			</el-button>
 			<el-button type="primary" @click="loginToServer">确 定</el-button>
 		</div>
 	</el-dialog>
@@ -48,9 +50,6 @@
 		methods: {
 			show() {
 				this.loginVisible = true;
-			},
-			toRegister() {
-				window.location.href = '/register';
 			},
 			loginToServer() {
 				const { userName, passWord } = this.ruleForm;

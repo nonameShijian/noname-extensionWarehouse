@@ -7,6 +7,7 @@ import notFound from 'view/notFound';
 import register from 'view/register';
 import downloadGame from 'view/downloadGame';
 import comment from 'view/comment';
+import help from 'view/help';
 
 Vue.use(Router);
 
@@ -43,6 +44,10 @@ export default new Router({
 		path: '/comment',
 		name: 'comment',
 		component: comment
+	}, {
+		path: '/help',
+		name: 'help',
+		component: help
 	}, {
 		path: '/404',
 		name: '404',

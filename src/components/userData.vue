@@ -85,7 +85,7 @@
 						message: '长度在6-16个字符之间',
 						trigger: 'blur'
 					}],
-					email: [{
+					/*email: [{
 						required: true,
 						message: '请输入用户邮箱',
 						trigger: 'blur',
@@ -103,7 +103,7 @@
 						max: 6,
 						message: '请输入6位验证码',
 						trigger: 'blur',
-					}],
+					}],*/
 				},
 			};
 		},
@@ -198,6 +198,7 @@
 				let email = document.getElementById('userData-email');
 				email && email.setAttribute('readonly', true);
 				this.closeUserData();
+				this.$refs.userData.resetFields();
 			},
 		},
 	};

@@ -3,7 +3,7 @@
 		<el-header>
 			<el-menu :router="true" class="el-menu-demo" mode="horizontal" @select="handleSelect" text-color="#409EFF">
 			  <el-menu-item index="extension">扩展下载</el-menu-item>
-			  <el-menu-item index="2" disabled>热门资讯</el-menu-item>
+			  <el-menu-item index="help">代码教程</el-menu-item>
 			  <el-menu-item index="groupNumber">QQ交流群</el-menu-item>
 			  <el-menu-item index="downloadGame">游戏下载</el-menu-item>
 			  <!-- <el-menu-item index="register">注册用户</el-menu-item> -->

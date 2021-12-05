@@ -47,6 +47,7 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
+		publicPath:'../../', //解决部署后图片图表路径404
         fallback: 'vue-style-loader'
       })
     } else {
