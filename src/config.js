@@ -1,1 +1,1 @@
-export default 'http://mathskiller909.com:10001';
+export default 'https://mathskiller909.com/node_server';

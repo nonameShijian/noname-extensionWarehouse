@@ -60,7 +60,8 @@
 		},
 		methods: {
 			showAvatar({fromId}) {
-				return require('users/' + `${fromId}/avatar.jpg`);
+				//return require('users/' + `${fromId}/avatar.jpg`);
+				return getServer + '/userAvatar/' + fromId;
 			},
 			viewReply(reply, id) {
 				fetch(getServer + `/reviewReply?userId=${this.userId}&id=${id}`)

@@ -139,7 +139,8 @@
 		computed: {},
 		methods: {
 			showAvatar({fromId}) {
-				return require('users/' + `${fromId}/avatar.jpg`);
+				//return require('users/' + `${fromId}/avatar.jpg`);
+				return getServer + '/userAvatar/' + fromId;
 			},
 			//点赞
 			likeClick(item) {
@@ -234,7 +235,8 @@
 				this.replyDialogVisible = true;
 			},
 			deleteCommentInput(item) {
-				this.$confirm(`确定要删除此评论吗？${item.content}`, '删除评论确认', {
+				//this.$confirm(`确定要删除此评论吗？${item.content}`, '删除评论确认', {
+				this.$confirm(`确定要删除此评论吗？`, '删除评论确认', {
 					dangerouslyUseHTMLString: true,
 					confirmButtonText: '确定',
 					cancelButtonText: '取消',

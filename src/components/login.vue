@@ -86,7 +86,8 @@
 								this.loginVisible = false;
 								this.loginSuccess({
 									userId: userName,
-									avatarUrl: require('users/' + `${userName}/avatar.jpg`),
+									//avatarUrl: require('users/' + `${userName}/avatar.jpg`),
+									avatarUrl: getServer + '/userAvatar/' + userName,
 									scoreData,
 									userThumbsUpData
 								});

@@ -151,7 +151,7 @@
 				this.postDialogVisible = false;
 				this.postEditorValue = '';
 			},
-			getComment({ownerId}) {
+			getComment({ownerId} = {}) {
 				const loading = this.$loading({
 					lock: true,
 					text: 'Loading',
@@ -284,8 +284,8 @@
 				}
 			},
 			update() {
-				//location.href = '/comment';
-				this.getComment(this.routeQquery);
+				location.href = '/comment';
+				//this.getComment(this.routeQquery);
 			},
 			reverse() {
 				this.commentData.reverse();

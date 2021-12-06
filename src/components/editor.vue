@@ -197,7 +197,7 @@
 				}
 			},
 			selectEmoji(emoji) {
-				console.log(emoji);
+				//console.log(emoji);
 				//获取编辑器对象
 				let quill = this.$refs.myQuillEditor.quill;
 				//获取编辑器光标位置
